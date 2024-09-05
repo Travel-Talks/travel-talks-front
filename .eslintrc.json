@@ -1,0 +1,46 @@
+{
+    "root": true,
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "next/core-web-vitals",
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": { "jsx": true },
+        "ecmaVersion": 12,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "plugins": ["react", "@typescript-eslint", "eslint-plugin-prettier", "simple-import-sort"],
+    "rules": {
+        "quotes": ["error", "double", { "avoidEscape": true }],
+        "no-console": ["warn", { "allow": ["warn", "error"] }],
+        "no-use-before-define": "error",
+        "no-unexpected-multiline": 2,
+        "no-unused-vars": 0,
+        "@typescript-eslint/no-unused-vars": 2,
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+        "import/order": [
+            "error",
+            {
+                "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                },
+                "newlines-between": "always",
+                "pathGroupsExcludedImportTypes": ["builtin"]
+            }
+        ],
+        "import/newline-after-import": "error"
+    }
+}

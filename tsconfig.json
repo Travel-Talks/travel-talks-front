@@ -1,7 +1,42 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+    "compilerOptions": {
+        "target": "esnext",
+        "lib": ["esnext", "DOM", "DOM.Iterable", "ESNext"],
+        "types": ["vite-plugin-svgr/client"],
+        "removeComments": false,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "noImplicitAny": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": false,
+        "module": "esnext",
+        "skipLibCheck": true,
+        "declarationMap": true,
+        "allowJs": true,
+        "checkJs": true,
+        "sourceMap": true,
+        "declaration": true,
+        "outDir": "build",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        },
+        /* Bundler mode */
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true
+    },
+    "exclude": ["node_modules", "build"],
+    "include": ["src/**/*"]
 }

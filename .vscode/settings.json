@@ -1,0 +1,12 @@
+{
+    "editor.tokenColorCustomizations": {
+        "comments": "#FF8C00"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.singleQuote": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.organizeImports": "explicit"
+    }
+}

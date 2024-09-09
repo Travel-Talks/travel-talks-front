@@ -1,0 +1,11 @@
+@use './global.scss';
+@use './theme/breakpoints';
+@use './theme/mixin';
+@use './theme/reset';
+@use './theme/font';
+@use './theme/colors';
+
+#root {
+    min-height: 100%;
+    margin: 0px auto;
+}

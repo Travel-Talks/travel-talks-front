@@ -1,0 +1,31 @@
+// Flex style
+@mixin flex($direction: row, $position: center, $align: center) {
+    display: flex;
+    flex-direction: #{$direction};
+    justify-content: #{$position};
+    align-items: #{$align};
+}
+
+// Responsive style
+@mixin responsive($point) {
+    @if $point == mobile {
+        @media (max-width: $breakpoint-mobile) {
+            @content;
+        }
+    }
+    @if $point == mobile-l {
+        @media (max-width: $breakpoint-mobile-l) {
+            @content;
+        }
+    }
+    @if $point == tablet {
+        @media (max-width: $breakpoint-tablet) {
+            @content;
+        }
+    }
+    @if $point == tablet-l {
+        @media (max-width: $breakpoint-tablet-l) {
+            @content;
+        }
+    }
+}

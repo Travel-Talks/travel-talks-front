@@ -1,0 +1,63 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-size: calc(14px + 0.5vh);
+    height: 100%;
+    line-height: inherit;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+img {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    outline: none;
+    border: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+ul,
+li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+input,
+textarea {
+    outline: 0;
+    border: 0;
+    -webkit-border-radius: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #585858;
+    -webkit-box-shadow: 0 0 0 0 #222222 inset;
+}

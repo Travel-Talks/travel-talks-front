@@ -1,26 +1,25 @@
 {
     "compilerOptions": {
-        "target": "esnext",
-        "lib": ["esnext", "DOM", "DOM.Iterable", "ESNext"],
-        "types": ["vite-plugin-svgr/client"],
-        "removeComments": false,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "forceConsistentCasingInFileNames": true,
-        "allowUnreachableCode": false,
-        "allowUnusedLabels": false,
-        "noImplicitAny": true,
-        "noImplicitOverride": true,
-        "noImplicitReturns": false,
-        "module": "esnext",
-        "skipLibCheck": true,
-        "declarationMap": true,
-        "allowJs": true,
-        "checkJs": true,
-        "sourceMap": true,
-        "declaration": true,
-        "outDir": "build",
-        "baseUrl": ".",
+        "target": "esnext", // 자바스크립트의 ECMAScript 버전 설정
+        "lib": ["esnext", "DOM", "DOM.Iterable", "ESNext"], // 라이브러리 정의
+        "types": ["vite-plugin-svgr/client"], // 타입 정의
+        "removeComments": false, // 컴파일 시 주석을 제거하지 않음
+        "esModuleInterop": true, // CommonJS 모듈을 ES 모듈처럼 사용할 수 있게 설정
+        "allowSyntheticDefaultImports": true, // ES6 모듈에서 default import를 허용
+        "forceConsistentCasingInFileNames": true, // 파일 이름의 대소문자를 일관되게 유지
+        "allowUnreachableCode": true, // 도달할 수 없는 코드에 대해 경고
+        "allowUnusedLabels": false, // 사용되지 않는 레이블에 대해 경고하지 않음
+        "noImplicitAny": true, // any 타입을 허용하지 않음
+        "noImplicitReturns": true, // 함수가 반환하지 않는 경우 경고하지 않음
+        "module": "esnext", // 모듈 시스템을 ESNext 모듈로 설정
+        "skipLibCheck": true, // 라이브러리의 타입 검사 스킵
+        "declarationMap": true, // 선언 맵 파일 생성
+        "allowJs": true, // 자바스크립트 파일도 타입 체크하도록 허용
+        "checkJs": true, // 자바스크립트 파일에서 타입 체크 수행
+        "sourceMap": true, // 소스 맵 파일 생성
+        "declaration": true, // 타입 선언 파일(.d.ts) 생성
+        "outDir": "dist", // 컴파일된 파일을 출력할 디렉토리
+        "baseUrl": ".", // 기준 디렉토리
         "paths": {
             "@app/*": ["src/app/*"],
             "@pages/*": ["src/pages/*"],
@@ -30,18 +29,19 @@
             "@shared/*": ["src/shared/*"]
         },
         /* Bundler mode */
-        "moduleResolution": "bundler",
-        "allowImportingTsExtensions": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "noEmit": true,
-        "jsx": "react-jsx",
+        "moduleResolution": "bundler", // 모듈 해석 방식을 bundler로 설정
+        "allowImportingTsExtensions": true, // .ts와 .tsx 파일 확장자를 임포트할 수 있도록 허용
+        "resolveJsonModule": true, // JSON 모듈을 타입으로 임포트할 수 있도록 허용
+        "isolatedModules": true, // 모든 파일을 개별 모듈로 간주
+        "noEmit": true, // 컴파일 시 출력 파일을 생성하지 않음
+        "jsx": "react-jsx", // JSX를 React 17 이상의 새로운 JSX 변환으로 컴파일
+
         /* Linting */
-        "strict": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true
+        "strict": true, // 엄격한 타입 검사를 활성화
+        "noUnusedLocals": true, // 사용하지 않는 지역 변수에 대해 오류 발생
+        "noUnusedParameters": true, // 사용하지 않는 함수 매개변수에 대해 오류 발생
+        "noFallthroughCasesInSwitch": true // switch 문에서 모든 case가 fallthrough 되는 경우 오류 발생
     },
-    "exclude": ["node_modules", "build"],
-    "include": ["src/**/*"]
+    "exclude": ["node_modules", "build"], // 컴파일에서 제외할 디렉토리
+    "include": ["src/**/*", "vite.config.ts"] // 컴파일에 포함할 파일
 }

@@ -1,46 +1,104 @@
 {
     "root": true,
     "env": {
-        "browser": true,
-        "es2021": true
+        "browser": true, // 브라우저 환경에서 사용할 수 있는 전역 변수를 설정
+        "es2021": true // ECMAScript 2021 문법을 지원
     },
     "extends": [
-        "next/core-web-vitals",
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:prettier/recommended",
-        "plugin:@typescript-eslint/recommended",
-        "prettier"
+        "eslint:recommended", // ESLint의 기본 추천 규칙을 사용
+        "plugin:react/recommended", // React 관련 추천 규칙을 사용
+        "plugin:prettier/recommended", // Prettier와의 충돌을 방지하고 Prettier 규칙을 적용
+        "plugin:react-hooks/recommended",
+        "plugin:@typescript-eslint/recommended", // TypeScript 관련 추천 규칙을 사용
+        "prettier" // Prettier와의 충돌을 방지
     ],
-    "parser": "@typescript-eslint/parser",
+    "parser": "@typescript-eslint/parser", // TypeScript 코드의 구문 분석을 위해 @typescript-eslint/parser를 사용
     "parserOptions": {
-        "ecmaFeatures": { "jsx": true },
-        "ecmaVersion": 12,
-        "sourceType": "module",
-        "project": "./tsconfig.json"
+        "ecmaFeatures": { "jsx": true }, // JSX 문법을 사용할 수 있도록 설정
+        "ecmaVersion": 12, // ECMAScript 2021 문법을 지원
+        "sourceType": "module", // ES 모듈을 사용하여 import/export 문법을 지원
+        "project": "./tsconfig.json" // TypeScript 프로젝트의 tsconfig.json 파일을 참조
     },
-    "plugins": ["react", "@typescript-eslint", "eslint-plugin-prettier", "simple-import-sort"],
+    "plugins": [
+        "react", // React 관련 규칙을 제공
+        "@typescript-eslint", // TypeScript 관련 규칙을 제공
+        "eslint-plugin-prettier", // Prettier와 관련된 규칙을 제공
+        "react-hooks",
+        "import"
+    ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "prettier/prettier": [
+        "error",
+        {
+            "endOfLine": "auto"
+        }
+    ],
     "rules": {
-        "quotes": ["error", "double", { "avoidEscape": true }],
-        "no-console": ["warn", { "allow": ["warn", "error"] }],
-        "no-use-before-define": "error",
-        "no-unexpected-multiline": 2,
-        "no-unused-vars": 0,
-        "@typescript-eslint/no-unused-vars": 2,
-        "react/react-in-jsx-scope": "off",
-        "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+        "quotes": ["error", "single", { "avoidEscape": true }], // 문자열을 single quotes로 사용. escape가 필요한 경우는 허용
+        "no-console": ["warn", { "allow": ["warn", "error"] }], // console 문 사용을 경고. warn과 error만 허용
+        "no-use-before-define": "error", // 변수를 정의하기 전에 사용하면 에러
+        "no-unexpected-multiline": "error", // 예기치 않은 멀티라인 표현을 에러
+        "no-unused-vars": "off", // 사용되지 않는 변수를 허용. 바로 아래에 있는 typescript eslint로 적용
+        "@typescript-eslint/no-unused-vars": "error", // TypeScript에서 사용되지 않는 변수 에러
+        "react/react-in-jsx-scope": "off", // React를 JSX 스코프에 포함시키지 않도록 허용
+        "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }], // JSX를 사용하는 파일의 확장자를 .ts와 .tsx로 제한
         "import/order": [
             "error",
             {
-                "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
+                "groups": [
+                    ["builtin", "external"], // 내장 모듈과 외부 라이브러리
+                    "internal", // 내부 모듈
+                    ["sibling", "parent", "index"] // 동급 모듈, 부모 모듈, 인덱스 모듈
+                ],
+                "pathGroups": [
+                    {
+                        "pattern": "react*",
+                        "group": "external",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@app/**",
+                        "group": "internal",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "@pages/**",
+                        "group": "internal",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "@widgets/**",
+                        "group": "internal",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "@features/**",
+                        "group": "internal",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "@entities/**",
+                        "group": "internal",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "@shared/**",
+                        "group": "internal",
+                        "position": "after"
+                    }
+                ],
+                "pathGroupsExcludedImportTypes": ["builtin"], // 내장 모듈은 제외하고 정렬
+                "newlines-between": "always", // 그룹 간에 한 줄 띄우기
                 "alphabetize": {
-                    "order": "asc",
-                    "caseInsensitive": true
-                },
-                "newlines-between": "always",
-                "pathGroupsExcludedImportTypes": ["builtin"]
+                    "order": "asc", // 그룹 내에서 알파벳 순으로 정렬
+                    "caseInsensitive": true // 대소문자 구분 없이 정렬
+                }
             }
         ],
-        "import/newline-after-import": "error"
+        "import/newline-after-import": "error" // import 문 뒤에 빈 줄을 추가하도록 강제
     }
 }

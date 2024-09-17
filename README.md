@@ -10,7 +10,7 @@ This is **Trevel Talks** front-end team open source. Developed entirely on the w
 
 ## Install
 
-1. Git clone footballer web project using command `git clone https://github.com/Travel-Talks/travel-talks-front.git`
+1. Git clone Trevel Talks web project using command `git clone https://github.com/Travel-Talks/travel-talks-front.git`
 2. Install pnpm package dependencies using command `pnpm i`
 3. Rund project using command `pnpm dev`
 

@@ -1,1 +1,1 @@
-export { BrowserRouter } from './RouterProvider.tsx';
+export { BrowserRouter } from './RouterProvider.tsx'

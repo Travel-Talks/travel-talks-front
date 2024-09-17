@@ -31,12 +31,6 @@
             "version": "detect"
         }
     },
-    "prettier/prettier": [
-        "error",
-        {
-            "endOfLine": "auto"
-        }
-    ],
     "rules": {
         "quotes": ["error", "single", { "avoidEscape": true }], // 문자열을 single quotes로 사용. escape가 필요한 경우는 허용
         "no-console": ["warn", { "allow": ["warn", "error"] }], // console 문 사용을 경고. warn과 error만 허용
@@ -46,6 +40,12 @@
         "@typescript-eslint/no-unused-vars": "error", // TypeScript에서 사용되지 않는 변수 에러
         "react/react-in-jsx-scope": "off", // React를 JSX 스코프에 포함시키지 않도록 허용
         "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }], // JSX를 사용하는 파일의 확장자를 .ts와 .tsx로 제한
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
         "import/order": [
             "error",
             {

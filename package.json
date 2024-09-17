@@ -7,9 +7,12 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc -b && vite build",
-        "lint": "eslint .",
         "preview": "vite preview",
-        "type-check": "tsc"
+        "type-check": "tsc",
+        "prettier": "prettier --check ./src",
+        "prettier:fix": "prettier --write ./src",
+        "eslint": "eslint ./src",
+        "eslint:fix": "eslint --fix ./src"
     },
     "dependencies": {
         "@tanstack/react-query": "^5.51.23",

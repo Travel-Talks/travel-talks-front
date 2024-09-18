@@ -55,4 +55,4 @@ jobs:
           BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET}}
         run: |
           aws s3 sync \
-            ./build s3://$BUCKET_NAME
+            ./dist s3://$BUCKET_NAME

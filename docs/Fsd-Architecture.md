@@ -2,7 +2,7 @@
 
 기능 분할 설계(Feature-Sliced Design, FSD)로써 추후에 나올 레이어에 고유한 책임 영역이 있으며, 이는 비즈니스 지향적인 추구를 하는 아키텍쳐입니다.
 
-![fsd-architecture](../public/fsd-architecture.png)
+![fsd-architecture](./fsd-architecture.png)
 
 ### Layer
 

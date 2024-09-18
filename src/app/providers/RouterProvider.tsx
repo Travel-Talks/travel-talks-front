@@ -3,6 +3,8 @@ import { RouterProvider, createBrowserRouter, useRouteError } from 'react-router
 
 import { Layout } from '@app/layouts'
 
+import { homeRoute } from '@pages/home'
+
 const ErrorBoundary = () => {
     const error = useRouteError()
     if (error) throw error
@@ -16,7 +18,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Layout />,
-                children: [],
+                children: [homeRoute],
             },
         ],
     },

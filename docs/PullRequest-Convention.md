@@ -2,11 +2,15 @@
 
 ### PR 제목 네이밍
 
--   [Commit-Convention](./Commit-Convention.md)의 커밋 메세지 타입을 `prefix`로 작성합니다. 모두 대문자를 사용.
-    -   예시
-        -   [STYLE] 네이게이션
-        -   [FEAT] 인증로직
-        -   [REFACTOR] 탭 컴포넌트 리팩토링
+[Commit-Convention](./Commit-Convention.md)의 커밋 메세지 타입을 `prefix`로 작성합니다. 모두 대문자를 사용.
+
+예시:
+
+```
+[STYLE]네이게이션
+[FEAT]인증로직
+[REFACTOR]탭 컴포넌트 리팩토링
+```
 
 ### PR 방법
 

@@ -5,14 +5,21 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
+        "type-check": "tsc",
         "dev": "vite",
         "build": "tsc -b && vite build",
-        "preview": "vite preview",
-        "type-check": "tsc",
+        "build:preview": "vite preview",
         "prettier": "prettier --check ./src",
         "prettier:fix": "prettier --write ./src",
         "eslint": "eslint ./src",
-        "eslint:fix": "eslint --fix ./src"
+        "eslint:fix": "eslint --fix ./src",
+        "prepare": "husky && husky install"
+    },
+    "lint-staged": {
+        "src/**/*.{js,jsx,ts,tsx}": [
+            "eslint --cache --fix",
+            "prettier --cache --write"
+        ]
     },
     "dependencies": {
         "@tanstack/react-query": "^5.51.23",
@@ -40,6 +47,8 @@
         "eslint-plugin-react": "^7.36.1",
         "eslint-plugin-react-hooks": "^4.6.2",
         "eslint-plugin-react-refresh": "^0.4.7",
+        "husky": "^8.0.0",
+        "lint-staged": "^15.2.10",
         "prettier": "2.8.8",
         "terser": "^5.31.5",
         "typescript": "^5.2.2",

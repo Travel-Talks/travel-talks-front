@@ -6,25 +6,41 @@ This is **Trevel Talks** front-end team open source. Developed entirely on the w
 
 ## Prerequisites
 
--   Need to install `pnpm` package manage
+First step is you need to install Node https://nodejs.org/en/.
+
+The Travel Talks project uses `pnpm` for package management. To install Pnpm, run this command:
+
+```
+ npm install -g pnpm
+```
 
 ## Install
 
-1. Git clone Trevel Talks web project using command `git clone https://github.com/Travel-Talks/travel-talks-front.git`
-2. Install pnpm package dependencies using command `pnpm i`
-3. Rund project using command `pnpm dev`
+```
+git clone https://github.com/Travel-Talks/travel-talks-front.git
+cd travel-talks-front
+pnpm i
+```
 
-## Run Server
+## Local Development
 
-> http://localhost:3000/
+To run this application locally, run this command:
 
--   dev: `pnpm dev`
--   build: `pnpm build`
--   lint: `pnpm lint`
+```
+pnpm dev
+```
+
+The application will start on http://localhost:3000.
 
 ## Coding Convention
 
+We are using **husky**. So, you need to keep coding convention like commit and eslint rules
+
 -   [Coding Convention](./docs/README.md)
+
+## Description of FSD Architecture
+
+-   [FSD Architecture](./docs/Fsd-Architecture.md)
 
 ## Technology Stack
 

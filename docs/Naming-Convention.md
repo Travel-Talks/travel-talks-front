@@ -50,7 +50,7 @@
     const handleInput = () => {}
     ```
 
--   자식 컴포넌트로 event handler를 내려줘야하는 경우 자식 컴포넌트 props를 prefix를 `on-`이라고 명시
+-   자식 컴포넌트로 handler를 내려줘야하는 경우 자식 컴포넌트 props를 prefix를 `on-`이라고 명시
 
     ```
     const App = () => {

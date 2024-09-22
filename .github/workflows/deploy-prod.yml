@@ -17,21 +17,36 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '20.x'
 
       - name: Install pnpm
         run: npm install -g pnpm
 
-      - name: Cache pnpm store
-        uses: actions/cache@v3
+      - name: Retrieve cache
+        uses: leroy-merlin-br/action-s3-cache@v1
         with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-  
+          action: get
+          aws-access-key-id: ${{ secrets.AWS_S3_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_S3_SECRET_KEY }}
+          aws-region: ap-northeast-2
+          bucket: ${{ secrets.AWS_S3_BUCKET}}
+          key: ${{ hashFiles('pnpm.lock') }}
 
       - name: Install pnpm Dependencies
         run: pnpm install  
+
+      - name: Save cache
+        uses: leroy-merlin-br/action-s3-cache@v1
+        with:
+          action: put
+          aws-access-key-id: ${{ secrets.AWS_S3_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_S3_SECRET_KEY }}
+          aws-region: ap-northeast-2
+          bucket: ${{ secrets.AWS_S3_BUCKET}}
+          s3-class: STANDARD_IA
+          key: ${{ hashFiles('pnpm.lock') }}
+          artifacts: |
+            node_modules/*
 
       - name: Build Project
         run: pnpm build
@@ -44,7 +59,7 @@ jobs:
           aws-region: ap-northeast-2
       
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: ./dist

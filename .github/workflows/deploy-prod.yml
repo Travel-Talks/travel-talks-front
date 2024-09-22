@@ -13,14 +13,18 @@ jobs:
     steps:
       - name: Checkout Github Action
         uses: actions/checkout@v3
+      - run: echo "Checked out the repository."
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
+      - run: echo "Node.js version 20.x is set up."
 
       - name: Install pnpm
-        run: npm install -g pnpm
+        run: |
+          npm install -g pnpm
+          echo "pnpm has been installed."
 
       - name: Retrieve cache
         uses: leroy-merlin-br/action-s3-cache@v1
@@ -29,11 +33,14 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_S3_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_S3_SECRET_KEY }}
           aws-region: ap-northeast-2
-          bucket: ${{ secrets.AWS_S3_BUCKET}}
+          bucket: ${{ secrets.AWS_S3_BUCKET }}
           key: ${{ hashFiles('pnpm.lock') }}
+      - run: echo "Cache has been retrieved."
 
       - name: Install pnpm Dependencies
-        run: pnpm install  
+        run: |
+          pnpm install  
+          echo "pnpm dependencies have been installed."
 
       - name: Save cache
         uses: leroy-merlin-br/action-s3-cache@v1
@@ -42,31 +49,36 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_S3_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_S3_SECRET_KEY }}
           aws-region: ap-northeast-2
-          bucket: ${{ secrets.AWS_S3_BUCKET}}
+          bucket: ${{ secrets.AWS_S3_BUCKET }}
           s3-class: STANDARD_IA
           key: ${{ hashFiles('pnpm.lock') }}
           artifacts: |
             node_modules/*
+      - run: echo "Cache has been saved."
 
       - name: Build Project
-        run: pnpm build
-      
+        run: |
+          pnpm build
+          echo "Project has been built."
+
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v3
         with:
           aws-access-key-id: ${{ secrets.AWS_S3_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_S3_SECRET_KEY }}
           aws-region: ap-northeast-2
+      - run: echo "AWS credentials have been configured."
       
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: ./dist
-      
+      - run: echo "Build artifacts have been uploaded."
+
       - name: Upload to S3
         env:
-          BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET}}
+          BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET }}
         run: |
-          aws s3 sync \
-            ./dist s3://$BUCKET_NAME
+          aws s3 sync ./dist s3://$BUCKET_NAME
+          echo "Uploaded to S3 successfully."

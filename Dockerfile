@@ -1,7 +1,7 @@
 # Build React App
 FROM node:alpine3.18 as build
 WORKDIR /app
-COPY packages.json .
+COPY package.json .
 RUN pnpm install
 COPY . .
 RUN pnpm build

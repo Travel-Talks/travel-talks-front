@@ -1,7 +1,7 @@
 {
     "name": "travel-talks-front",
     "author": "owni14",
-    "description": "travel talks front end open source",
+    "description": "travel talks front-end open source",
     "private": true,
     "version": "0.0.0",
     "type": "module",
